@@ -5,3 +5,17 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+/* Tailwind Container Config */
+@utility container {
+  margin-inline: auto;
+}
+
+/* Colors */
+@theme {
+  --color-primary: #111827;
+  --color-body-text: #4b5563;
+  --color-vibrant: #0ea5e9;
+  --color-border: #e5e7eb;
+  --color-bg-grey: #f8f8f8;
+}
