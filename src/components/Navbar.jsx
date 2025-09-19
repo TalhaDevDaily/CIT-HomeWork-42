@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import logo from "../assets/images/logo.png";
 import { CiSearch } from "react-icons/ci";
+import { RiShoppingCartLine, RiUserLine } from "react-icons/ri";
+import Cart from "./Cart";
 
 const Navbar = () => {
+  const [showCart, setShowCart] = useState(false);
+
   return (
     <>
       <nav className="py-[27px]">
@@ -20,7 +24,24 @@ const Navbar = () => {
               className="outline-none w-full text-[14px] text-primary placeholder:text-body-text"
             />
           </div>
+
+          <div className="menuButtons flex gap-[22px] items-center">
+            <button className="text-2xl font-extralight cursor-pointer">
+              <RiUserLine />
+            </button>
+            <button
+              onClick={() => setShowCart(true)}
+              className="text-2xl font-extralight cursor-pointer relative"
+            >
+              <RiShoppingCartLine />
+              <div className="w-[20px] h-[20px] rounded-full bg-vibrant text-[12px] text-white flex justify-center items-center absolute top-[-10px] right-[-10px]">
+                0
+              </div>
+            </button>
+          </div>
         </div>
+
+        <Cart isOpen={showCart} isClosed={() => setShowCart(false)} />
       </nav>
     </>
   );
