@@ -1,0 +1,66 @@
+/* ----------- Hero Slider dots customization */
+.hero-slider {
+  position: relative;
+}
+
+.hero-slider .slick-dots {
+  display: flex !important;
+  gap: 12px;
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.hero-slider .slick-dots li button {
+  font-size: 0;
+  height: 8px;
+  width: 8px;
+  border: 1px solid #111827;
+  border-radius: 50%;
+}
+
+.hero-slider .slick-dots .slick-active button {
+  background: #111827;
+}
+
+/* ----------- Catagories Section Slider dots customization */
+.catagories .slick-dots {
+  display: flex !important;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.catagories .slick-dots li button {
+  font-size: 0;
+  height: 8px;
+  width: 8px;
+  background-color: rgba(17, 24, 39, 0.5);
+  border-radius: 50%;
+}
+
+.catagories .slick-dots .slick-active button {
+  background: #111827;
+}
+
+/* ----------- Catagories Section Slider dots customization */
+.recommendationCatalogue .slick-dots {
+  display: flex !important;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 64px;
+  margin-bottom: 88px;
+}
+
+.recommendationCatalogue .slick-dots li button {
+  font-size: 0;
+  height: 8px;
+  width: 8px;
+  background-color: rgba(17, 24, 39, 0.5);
+  border-radius: 50%;
+}
+
+.recommendationCatalogue .slick-dots .slick-active button {
+  background: #111827;
+}
