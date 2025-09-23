@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CommonHeader from "./common/CommonHeader";
 import CommonProductCard from "./common/CommonProductCard";
 import Slider from "react-slick";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 const Recommendation = () => {
   const settings = {
@@ -14,7 +14,16 @@ const Recommendation = () => {
     arrows: false,
   };
 
-  axios.get("https://dummyjson.com/products").then((res) => console.log(res));
+  const [allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => setAllProducts(res.data.products))
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(allProducts);
 
   return (
     <section>
@@ -23,7 +32,22 @@ const Recommendation = () => {
           firstHalf={"Recommendations."}
           secondHalf={"Best matching products for you"}
         />
-        <div className="recommendationCatalogue mt-10">
+
+        <div className="mt-10 flex items-center gap-5 lg:gap-16 flex-wrap">
+          {allProducts.map((singleProduct) => (
+            <CommonProductCard
+              key={singleProduct.id}
+              productImg={singleProduct.thumbnail}
+              productTitle={singleProduct.title}
+              productPrice={singleProduct.price}
+              productCategory={singleProduct.category}
+              priceBeforeDiscount={singleProduct.discountPercentage}
+              productRating={singleProduct.rating}
+              inStock={singleProduct.stock}
+            />
+          ))}
+        </div>
+        {/* <div className="recommendationCatalogue mt-10">
           <Slider {...settings}>
             <CommonProductCard />
             <CommonProductCard />
@@ -39,7 +63,7 @@ const Recommendation = () => {
             <CommonProductCard />
             <CommonProductCard />
           </Slider>
-        </div>
+        </div> */}
       </div>
     </section>
   );
