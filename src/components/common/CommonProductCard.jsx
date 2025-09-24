@@ -17,7 +17,9 @@ const CommonProductCard = ({
         <img src={productImg} alt="Product Image" />
       </div>
       <div className="flex items-center justify-between">
-        <h2 className="text-base font-semibold text-primary">{productTitle}</h2>
+        <h2 className="text-base font-semibold text-primary truncate w-[60%]">
+          {productTitle}
+        </h2>
         <h2 className="text-base font-semibold text-primary">
           ${productPrice}
         </h2>
@@ -25,7 +27,7 @@ const CommonProductCard = ({
       <div className="flex items-center justify-between mb-[15px] mt-5">
         <p className="text-[14px] text-body-text">{productCategory}</p>
         <p className="text-[14px] text-body-text line-through">
-          ${((100 + priceBeforeDiscount) / 100) * productPrice}
+          ${(((100 + priceBeforeDiscount) / 100) * productPrice).toFixed(2)}
         </p>
       </div>
       <div className="flex items-center gap-1">
