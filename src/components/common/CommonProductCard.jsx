@@ -14,7 +14,9 @@ const CommonProductCard = ({
   inStock,
 }) => {
   return (
-    <div className={`w-[309px] h-[448px] relative group ${extraStyling}`}>
+    <div
+      className={`w-[309px] h-[448px] relative group overflow-hidden ${extraStyling}`}
+    >
       <div className="absolute top-4 right-[-50px] flex flex-col gap-5 group-hover:right-5 duration-500">
         <button className="text-xl p-3 rounded-full bg-white active:text-white active:bg-black duration-300">
           <RiShoppingCartLine />
@@ -25,11 +27,7 @@ const CommonProductCard = ({
         </button>
       </div>
       <div className="w-full h-[347px] rounded-2xl bg-gray-100">
-        <img
-          src={productImg}
-          alt="Product Image"
-          className="group-hover:backdrop-blur-lg"
-        />
+        <img src={productImg} alt="Product Image" className="" />
       </div>
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-primary truncate w-[60%]">

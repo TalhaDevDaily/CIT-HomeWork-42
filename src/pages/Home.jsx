@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import Features from "../components/Features";
 import Catagories from "../components/Catagories";
 import Recommendation from "../components/Recommendation";
+import BestSellers from "../components/BestSellers";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Features />
       <Catagories />
       <Recommendation />
+      <BestSellers />
     </>
   );
 };
