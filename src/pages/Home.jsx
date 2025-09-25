@@ -4,6 +4,7 @@ import Features from "../components/Features";
 import Catagories from "../components/Catagories";
 import Recommendation from "../components/Recommendation";
 import BestSellers from "../components/BestSellers";
+import Banner from "../components/Banner";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Catagories />
       <Recommendation />
       <BestSellers />
+      <Banner />
     </>
   );
 };

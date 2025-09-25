@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommonHeader from "./common/CommonHeader";
 import Slider from "react-slick";
+import axios from "axios";
+import CommonProductCard from "./common/CommonProductCard";
 
 const BestSellers = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     arrows: false,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 8000,
   };
 
   const [allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products?skip=10")
+      .then((res) => setAllProducts(res.data.products))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <section className="py-[88px] recommendationCatalogue">
@@ -24,7 +35,7 @@ const BestSellers = () => {
         />
 
         <Slider {...settings}>
-          {/* {allProducts.map((singleProduct) => (
+          {allProducts.map((singleProduct) => (
             <CommonProductCard
               key={singleProduct.id}
               productImg={singleProduct.thumbnail}
@@ -35,7 +46,7 @@ const BestSellers = () => {
               productRating={singleProduct.rating}
               inStock={singleProduct.stock}
             />
-          ))} */}
+          ))}
         </Slider>
       </div>
     </section>
