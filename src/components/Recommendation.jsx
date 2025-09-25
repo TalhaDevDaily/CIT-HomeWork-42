@@ -12,6 +12,9 @@ const Recommendation = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
     arrows: false,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 8000,
   };
 
   const [allProducts, setAllProducts] = useState([]);
@@ -33,37 +36,22 @@ const Recommendation = () => {
           secondHalf={"Best matching products for you"}
         />
 
-        <div className="mt-10 flex items-center gap-5 lg:gap-16 flex-wrap">
-          {allProducts.map((singleProduct) => (
-            <CommonProductCard
-              key={singleProduct.id}
-              productImg={singleProduct.thumbnail}
-              productTitle={singleProduct.title}
-              productPrice={singleProduct.price}
-              productCategory={singleProduct.category}
-              priceBeforeDiscount={singleProduct.discountPercentage}
-              productRating={singleProduct.rating}
-              inStock={singleProduct.stock}
-            />
-          ))}
-        </div>
-        {/* <div className="recommendationCatalogue mt-10">
+        <div className="recommendationCatalogue mt-10">
           <Slider {...settings}>
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
-            <CommonProductCard />
+            {allProducts.map((singleProduct) => (
+              <CommonProductCard
+                key={singleProduct.id}
+                productImg={singleProduct.thumbnail}
+                productTitle={singleProduct.title}
+                productPrice={singleProduct.price}
+                productCategory={singleProduct.category}
+                priceBeforeDiscount={singleProduct.discountPercentage}
+                productRating={singleProduct.rating}
+                inStock={singleProduct.stock}
+              />
+            ))}
           </Slider>
-        </div> */}
+        </div>
       </div>
     </section>
   );

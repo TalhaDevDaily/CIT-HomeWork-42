@@ -1,5 +1,7 @@
 import React from "react";
+import { CgClipboard } from "react-icons/cg";
 import { FaStar } from "react-icons/fa";
+import { RiShoppingCartLine } from "react-icons/ri";
 
 const CommonProductCard = ({
   extraStyling,
@@ -12,9 +14,22 @@ const CommonProductCard = ({
   inStock,
 }) => {
   return (
-    <div className={`w-[309px] h-[448px] ${extraStyling}`}>
+    <div className={`w-[309px] h-[448px] relative group ${extraStyling}`}>
+      <div className="absolute top-4 right-[-50px] flex flex-col gap-5 group-hover:right-5 duration-500">
+        <button className="text-xl p-3 rounded-full bg-white active:text-white active:bg-black duration-300">
+          <RiShoppingCartLine />
+        </button>
+
+        <button className="text-xl p-3 rounded-full bg-white active:text-white active:bg-black duration-300">
+          <CgClipboard />
+        </button>
+      </div>
       <div className="w-full h-[347px] rounded-2xl bg-gray-100">
-        <img src={productImg} alt="Product Image" />
+        <img
+          src={productImg}
+          alt="Product Image"
+          className="group-hover:backdrop-blur-lg"
+        />
       </div>
       <div className="flex items-center justify-between">
         <h2 className="text-base font-semibold text-primary truncate w-[60%]">
