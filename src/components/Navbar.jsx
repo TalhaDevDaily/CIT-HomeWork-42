@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="py-[27px]">
+      <nav className="hidden lg:block py-[27px]">
         <div className="container flex items-center justify-between">
           <Link to={"/"} className="navLogo w-[119px]">
             <img src={logo} alt="Logo" />

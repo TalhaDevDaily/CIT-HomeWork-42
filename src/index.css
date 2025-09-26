@@ -4,7 +4,7 @@
 /* Font - Poppins */
 body {
   font-family: "Poppins", sans-serif;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 /* Tailwind Container Config */

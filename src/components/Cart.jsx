@@ -5,9 +5,9 @@ const Cart = ({ isOpen, isClosed }) => {
   return (
     <>
       <section
-        className={`absolute top-0 ${
+        className={`fixed top-0 ${
           isOpen ? "right-0" : "right-[-100%]"
-        } w-full h-screen duration-[0.4s]`}
+        } w-full h-screen duration-[0.4s] z-10`}
       >
         <div
           onClick={isClosed}
@@ -16,7 +16,7 @@ const Cart = ({ isOpen, isClosed }) => {
         <div className="w-[400px] h-screen bg-white absolute top-0 right-0 px-5">
           <h2 className="text-xl font-medium py-5">Cart</h2>
 
-          <div className="w-full h-[700px] overflow-y-scroll">
+          <div className="w-full h-[80%] overflow-y-scroll">
             {/* -----------------Cart Product */}
             <div className="flex gap-5 items-center mt-5">
               <div className="w-15 h-15 bg-gray-300 rounded-[5px]">

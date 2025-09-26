@@ -17,7 +17,7 @@ const Hero = () => {
   };
   return (
     <>
-      <div className="slider-container hero-slider">
+      <div className="slider-container hero-slider hidden lg:block">
         <Slider {...settings}>
           <div>
             <Link to={"/"}>
@@ -35,6 +35,16 @@ const Hero = () => {
             </Link>
           </div>
         </Slider>
+      </div>
+
+      {/* Mobile Hero Section */}
+      <div className="pt-[163px] pb-[199px] bg-bg-grey">
+        <div className="container">
+          <div>
+            <h2 className="text-sm font-medium text-body-text"></h2>
+            <h1 className="text-[30px] font-semibold text-body-text text-primary"></h1>
+          </div>
+        </div>
       </div>
     </>
   );
