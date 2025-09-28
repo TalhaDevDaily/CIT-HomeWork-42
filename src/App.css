@@ -1,5 +1,6 @@
 /* ----------- Hero Slider dots customization */
-.hero-slider {
+.hero-slider,
+.mobo-hero-slider {
   position: relative;
 }
 
@@ -12,7 +13,17 @@
   transform: translatex(-50%);
 }
 
-.hero-slider .slick-dots li button {
+.mobo-hero-slider .slick-dots {
+  display: flex !important;
+  gap: 12px;
+  position: absolute;
+  bottom: -150px;
+  left: 10px;
+  transform: translatex(-50%);
+}
+
+.hero-slider .slick-dots li button,
+.mobo-hero-slider .slick-dots li button {
   font-size: 0;
   height: 8px;
   width: 8px;
@@ -20,7 +31,8 @@
   border-radius: 50%;
 }
 
-.hero-slider .slick-dots .slick-active button {
+.hero-slider .slick-dots .slick-active button,
+.mobo-hero-slider .slick-dots .slick-active button {
   background: #111827;
 }
 
