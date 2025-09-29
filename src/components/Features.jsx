@@ -8,9 +8,9 @@ const Features = () => {
   return (
     <section className="mt-[52px] mb-[32px]">
       <div className="container">
-        <div className="border border-border py-6 px-10 rounded-2xl flex justify-between">
+        <div className="lg:border border-border py-6 px-10 rounded-2xl flex justify-between">
           {/* Single Feature */}
-          <div className="w-[303px] border-r-3 border-border flex gap-4 items-center">
+          <div className="w-[303px] lg:border-r-3 border-border flex gap-4 items-center">
             <LiaShippingFastSolid className="text-3xl" />
             <div>
               <h2 className="text-lg font-semibold text-primary">
@@ -23,7 +23,7 @@ const Features = () => {
           </div>
 
           {/* Single Feature */}
-          <div className="w-[303px] border-r-3 border-border flex gap-4 items-center">
+          <div className="w-[303px] lg:border-r-3 border-border flex gap-4 items-center">
             <TbExchange className="text-3xl" />
             <div>
               <h2 className="text-lg font-semibold text-primary">
@@ -34,7 +34,7 @@ const Features = () => {
           </div>
 
           {/* Single Feature */}
-          <div className="w-[303px] border-r-3 border-border flex gap-4 items-center">
+          <div className="w-[303px] lg:border-r-3 border-border flex gap-4 items-center">
             <CiGlobe className="text-3xl" />
             <div>
               <h2 className="text-lg font-semibold text-primary">
