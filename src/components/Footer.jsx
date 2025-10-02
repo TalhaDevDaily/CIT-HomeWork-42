@@ -16,35 +16,33 @@ const Footer = () => {
       <div className="container">
         <div className="linkBox my-[60px] flex justify-between">
           <div>
-            <Link to={"/"}>
-              <img src={nextonLogo} alt="Logo" className="w-[119px]" />
+            <img src={nextonLogo} alt="Logo" className="w-[119px]" />
 
-              <ul className="mt-5 flex flex-col gap-3">
-                <li>
-                  <a href="">
-                    <img src={listItem1} alt="List Item" />
-                  </a>
-                </li>
+            <ul className="mt-5 flex flex-col gap-3">
+              <li>
+                <a href="">
+                  <img src={listItem1} alt="List Item" />
+                </a>
+              </li>
 
-                <li>
-                  <a href="">
-                    <img src={listItem2} alt="List Item" />
-                  </a>
-                </li>
+              <li>
+                <a href="">
+                  <img src={listItem2} alt="List Item" />
+                </a>
+              </li>
 
-                <li>
-                  <a href="">
-                    <img src={listItem3} alt="List Item" />
-                  </a>
-                </li>
+              <li>
+                <a href="">
+                  <img src={listItem3} alt="List Item" />
+                </a>
+              </li>
 
-                <li>
-                  <a href="">
-                    <img src={listItem4} alt="List Item" />
-                  </a>
-                </li>
-              </ul>
-            </Link>
+              <li>
+                <a href="">
+                  <img src={listItem4} alt="List Item" />
+                </a>
+              </li>
+            </ul>
           </div>
 
           <div>

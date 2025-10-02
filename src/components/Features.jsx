@@ -8,7 +8,7 @@ const Features = () => {
   return (
     <section className="mt-[52px] mb-[32px]">
       <div className="container">
-        <div className="lg:border border-border py-6 px-10 rounded-2xl flex justify-between">
+        <div className="lg:border border-border py-6 px-10 rounded-2xl grid grid-cols-2 grid-rows-3 lg:grid-rows-1 lg:grid-cols-4 lg:justify-items-center gap-y-[24px]">
           {/* Single Feature */}
           <div className="w-[303px] lg:border-r-3 border-border flex gap-4 items-center">
             <LiaShippingFastSolid className="text-3xl" />
@@ -16,7 +16,7 @@ const Features = () => {
               <h2 className="text-lg font-semibold text-primary">
                 Free shipping
               </h2>
-              <p className="text-[14px] text-body-text">
+              <p className="text-[14px] text-body-text hidden lg:inline-block">
                 On orders over $50.00
               </p>
             </div>
@@ -29,7 +29,9 @@ const Features = () => {
               <h2 className="text-lg font-semibold text-primary">
                 Very easy to return
               </h2>
-              <p className="text-[14px] text-body-text">Just phone number</p>
+              <p className="text-[14px] text-body-text hidden lg:inline-block">
+                Just phone number
+              </p>
             </div>
           </div>
 
@@ -40,20 +42,20 @@ const Features = () => {
               <h2 className="text-lg font-semibold text-primary">
                 Worldwide delivery
               </h2>
-              <p className="text-[14px] text-body-text">
+              <p className="text-[14px] text-body-text hidden lg:inline-block">
                 Fast delivery worldwide
               </p>
             </div>
           </div>
 
           {/* Single Feature */}
-          <div className="w-[303px] flex gap-4 items-center">
+          <div className="w-[303px] flex gap-4 items-center row-start-3 lg:row-start-1 lg:col-end-5">
             <RiRefund2Fill className="text-3xl" />
             <div>
               <h2 className="text-lg font-semibold text-primary">
                 Refunds policy
               </h2>
-              <p className="text-[14px] text-body-text">
+              <p className="text-[14px] text-body-text hidden lg:inline-block">
                 60 days return for any reason
               </p>
             </div>
