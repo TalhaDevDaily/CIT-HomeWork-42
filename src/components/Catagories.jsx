@@ -3,255 +3,155 @@ import CommonHeader from "./common/CommonHeader";
 import { Link } from "react-router";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Slider from "react-slick";
+import CommonCatagory from "./common/CommonCatagory";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import "./styles.css";
+
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const Catagories = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     arrows: false,
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <section className="catagories my-[88px]">
-      <div className="container">
+      <div className="container px-6 lg:px-0">
         <CommonHeader
           firstHalf={"Start exploring."}
           secondHalf={"Good things are waiting for you"}
         />
-        <Slider {...settings}>
-          <div className="singleCatagorySlide">
-            <div className="flex justify-between items-center">
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Men's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $24</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
+        <Swiper
+          slidesPerView={3}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 3000, // time between slides (ms)
+            disableOnInteraction: false, // keep autoplay after user swipes
+            pauseOnMouseEnter: true,
+          }}
+          breakpoints={{
+            639: {
+              slidesPerView: 1,
+              slidesPerGroup: 1,
+            },
+            767: {
+              slidesPerView: 2,
+              slidesPerGroup: 2,
+            },
+            1023: {
+              slidesPerView: 3,
+              slidesPerGroup: 3,
+            },
+          }}
+          modules={[Pagination]}
+          loop={true}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`For Men's`}
+              catagoryDescription={`Starting at $24`}
+            />
+          </SwiperSlide>
 
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Women's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $19</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`For Women's`}
+              catagoryDescription={`Starting at $19`}
+            />
+          </SwiperSlide>
 
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    Accessories
-                  </h2>
-                  <p className="text-[14px] text-body-text">
-                    Explore accessories
-                  </p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
-            </div>
-          </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`Accessories`}
+              catagoryDescription={`Explore accessories`}
+            />
+          </SwiperSlide>
 
-          <div className="singleCatagorySlide">
-            <div className="flex justify-between items-center">
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Men's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $24</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`For Men's`}
+              catagoryDescription={`Starting at $24`}
+            />
+          </SwiperSlide>
 
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Women's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $19</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`For Women's`}
+              catagoryDescription={`Starting at $19`}
+            />
+          </SwiperSlide>
 
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    Accessories
-                  </h2>
-                  <p className="text-[14px] text-body-text">
-                    Explore accessories
-                  </p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
-            </div>
-          </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`Accessories`}
+              catagoryDescription={`Explore accessories`}
+            />
+          </SwiperSlide>
 
-          <div className="singleCatagorySlide">
-            <div className="flex justify-between items-center">
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Men's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $24</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`For Men's`}
+              catagoryDescription={`Starting at $24`}
+            />
+          </SwiperSlide>
 
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Women's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $19</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`For Women's`}
+              catagoryDescription={`Starting at $19`}
+            />
+          </SwiperSlide>
 
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    Accessories
-                  </h2>
-                  <p className="text-[14px] text-body-text">
-                    Explore accessories
-                  </p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="singleCatagorySlide">
-            <div className="flex justify-between items-center">
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Men's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $24</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
-
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    For Women's
-                  </h2>
-                  <p className="text-[14px] text-body-text">Starting at $19</p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
-
-              {/* Single Catagory */}
-              <div className="w-[418px] p-10 border border-border rounded-2xl flex items-center justify-between mt-[40px]">
-                <div className="">
-                  <h2 className="text-[24px] font-semibold text-primary">
-                    Accessories
-                  </h2>
-                  <p className="text-[14px] text-body-text">
-                    Explore accessories
-                  </p>
-                </div>
-                <Link
-                  to={"#"}
-                  className="h-[36px] border-l-3 border-border pl-[12px] uppercase flex gap-[8px] items-center"
-                >
-                  Shop now
-                  <FaArrowRightLong className="text-2xl" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Slider>
+          <SwiperSlide>
+            <CommonCatagory
+              catagoryName={`Accessories`}
+              catagoryDescription={`Explore accessories`}
+            />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </section>
   );

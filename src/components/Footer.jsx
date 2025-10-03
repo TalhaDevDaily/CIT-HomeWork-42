@@ -13,8 +13,8 @@ import { Link } from "react-router";
 const Footer = () => {
   return (
     <footer className="">
-      <div className="container">
-        <div className="linkBox my-[60px] flex justify-between">
+      <div className="container px-6 lg:px-0">
+        <div className="linkBox my-[60px] flex lg:justify-between flex-col sm:flex-row gap-[60px] flex-wrap">
           <div>
             <img src={nextonLogo} alt="Logo" className="w-[119px]" />
 
@@ -46,8 +46,10 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-base">Getting started</h4>
-            <ul className="flex flex-col gap-4 mt-5">
+            <h4 className="font-semibold text-sm lg:text-base">
+              Getting started
+            </h4>
+            <ul className="flex flex-col gap-4 mt-5 text-sm lg:text-base">
               <li>
                 <Link to={"#"}>Release Notes</Link>
               </li>
@@ -67,8 +69,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-base">Explore</h4>
-            <ul className="flex flex-col gap-4 mt-5">
+            <h4 className="font-semibold text-sm lg:text-base">Explore</h4>
+            <ul className="flex flex-col gap-4 mt-5 text-sm lg:text-base">
               <li>
                 <Link to={"#"}>Prototyping</Link>
               </li>
@@ -88,8 +90,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-base">Community</h4>
-            <ul className="flex flex-col gap-4 mt-5">
+            <h4 className="font-semibold text-sm lg:text-base">Community</h4>
+            <ul className="flex flex-col gap-4 mt-5 text-sm lg:text-base">
               <li>
                 <Link to={"#"}>Discussion Forums</Link>
               </li>
@@ -108,8 +110,10 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="rightsReserved h-[96px] flex justify-between items-center">
-          <div className="copyright">Nexton eCommerce. &copy; 2024</div>
+        <div className="rightsReserved h-[96px] flex lg:justify-between items-center justify-center flex-col lg:flex-row gap-3">
+          <div className="copyright text-body-text text-sm lg:text-base">
+            Nexton eCommerce. &copy; 2024
+          </div>
           <div className="paymentMethods flex gap-1">
             <a href={"https://bd.visa.com/"}>
               <img src={visa} alt="Visa" />

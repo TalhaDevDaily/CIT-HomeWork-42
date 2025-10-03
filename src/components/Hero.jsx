@@ -40,7 +40,7 @@ const Hero = () => {
 
       {/* Mobile Hero Section */}
       <div className="pt-[163px] pb-[199px] bg-bg-grey lg:hidden mobo-hero-slider">
-        <div className="container px-6">
+        <div className="container px-6 lg:px-0">
           <Slider {...settings}>
             <div>
               <h2 className="text-sm font-medium text-body-text">
