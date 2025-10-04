@@ -110,7 +110,7 @@
 }
 
 .swiper-slide {
-  text-align: center;
+  /* text-align: center; */
 
   /* Center slide text vertically */
   display: flex;

@@ -14,46 +14,12 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+import { useNavigate } from "react-router";
 
 const Recommendation = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    arrows: false,
-    autoplay: true,
-    speed: 3000,
-    autoplaySpeed: 8000,
-    responsive: [
-      {
-        breakpoint: 1023,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 639,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   const [allProducts, setAllProducts] = useState([]);
+
+  const productNavigation = useNavigate();
 
   useEffect(() => {
     axios
@@ -62,7 +28,10 @@ const Recommendation = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  console.log(allProducts);
+  // ------------- Product Details Handler
+  const handleDetails = (productDetails) => {
+    productNavigation(`/product-details/${productDetails}`);
+  };
 
   return (
     <section>
@@ -98,7 +67,6 @@ const Recommendation = () => {
               },
             }}
             modules={[Pagination]}
-            loop={true}
             className="mySwiper"
           >
             {allProducts.map((singleProduct) => (
@@ -111,24 +79,11 @@ const Recommendation = () => {
                   priceBeforeDiscount={singleProduct.discountPercentage}
                   productRating={singleProduct.rating}
                   inStock={singleProduct.stock}
+                  clickDetails={() => handleDetails(singleProduct.id)}
                 />
               </SwiperSlide>
             ))}
           </Swiper>
-          {/* <Slider {...settings}>
-            {allProducts.map((singleProduct) => (
-              <CommonProductCard
-                key={singleProduct.id}
-                productImg={singleProduct.thumbnail}
-                productTitle={singleProduct.title}
-                productPrice={singleProduct.price}
-                productCategory={singleProduct.category}
-                priceBeforeDiscount={singleProduct.discountPercentage}
-                productRating={singleProduct.rating}
-                inStock={singleProduct.stock}
-              />
-            ))}
-          </Slider> */}
         </div>
       </div>
     </section>

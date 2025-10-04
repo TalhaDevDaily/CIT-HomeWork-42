@@ -12,6 +12,7 @@ const CommonProductCard = ({
   priceBeforeDiscount,
   productRating,
   inStock,
+  clickDetails,
 }) => {
   return (
     <div
@@ -22,7 +23,10 @@ const CommonProductCard = ({
           <RiShoppingCartLine />
         </button>
 
-        <button className="text-xl p-3 rounded-full bg-white active:text-white active:bg-black duration-300">
+        <button
+          onClick={clickDetails}
+          className="text-xl p-3 rounded-full bg-white active:text-white active:bg-black duration-300"
+        >
           <CgClipboard />
         </button>
       </div>

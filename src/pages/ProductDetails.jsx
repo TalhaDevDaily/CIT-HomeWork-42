@@ -1,59 +1,73 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { IoBagHandleOutline } from "react-icons/io5";
 import CommonHeader from "../components/common/CommonHeader";
 import { BsStars } from "react-icons/bs";
 import CommonProductCard from "../components/common/CommonProductCard";
+import { useParams } from "react-router";
+import axios from "axios";
 
 const ProductDetails = () => {
-  const [data, setData] = useState(
-    "https://geckocustom.com/cdn/shop/files/geckocustom-pet-halloween-costume-funny-dog-costume-with-hat-dog-clothes-halloween-costumes-small-dog-cat-costume-for-girls-boys-33947456274609_600x.jpg?v=1691548205"
-  );
+  const [singleProduct, setSingleProduct] = useState("");
 
-  //   https://geckocustom.com/cdn/shop/files/geckocustom-pet-halloween-costume-funny-dog-costume-with-hat-dog-clothes-halloween-costumes-small-dog-cat-costume-for-girls-boys-33947456274609_600x.jpg?v=1691548205
-  //   https://ae01.alicdn.com/kf/HTB1Py2RXQL0gK0jSZFtq6xQCXXa2.jpg
-  //   https://i.ebayimg.com/00/s/ODAwWDgwMA==/z/vi8AAOSwTodbJTfV/$_57.JPG?set_id=880000500F
-  //   https://catspros.s3.amazonaws.com/wp-content/uploads/2023/05/07045823/FunnyChinesePrincessCosplayClothesForCatsHalloweenCostumeDogsXmasSuitCatClothingDogOutfitPetApparel-20-1.jpg
-  //   https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/s/06/7b5caeea-f937-4bd4-bf8e-a60e0a7a30a6.jpg
+  const [overviewImg, setOverviewImg] = useState("");
 
-  const buttonImg = [
-    "https://ae01.alicdn.com/kf/HTB1Py2RXQL0gK0jSZFtq6xQCXXa2.jpg",
-    "https://i.ebayimg.com/00/s/ODAwWDgwMA==/z/vi8AAOSwTodbJTfV/$_57.JPG?set_id=880000500F",
-    "https://catspros.s3.amazonaws.com/wp-content/uploads/2023/05/07045823/FunnyChinesePrincessCosplayClothesForCatsHalloweenCostumeDogsXmasSuitCatClothingDogOutfitPetApparel-20-1.jpg",
-    "https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/s/06/7b5caeea-f937-4bd4-bf8e-a60e0a7a30a6.jpg",
-  ];
+  const paramsData = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`https://dummyjson.com/products/${paramsData.product}`)
+      .then((res) => {
+        setSingleProduct(res.data), setOverviewImg(res.data.images?.[0]);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(singleProduct);
 
   return (
     <>
       <div className="container px-6 lg:px-0">
         <div className="flex lg:justify-between flex-col lg:flex-row">
           <div>
-            <div className="productGallery flex gap-6 items-center border-b border-border pb-[52px] mb-[52px]">
-              <div className="flex flex-col gap-4">
-                {buttonImg.map((item, i) => (
-                  <button
-                    onClick={function () {
-                      setData(item);
-                    }}
-                    key={i}
-                    className="w-[140px] h-[157.5px] rounded-2xl overflow-hidden"
-                  >
-                    <img
-                      src={item}
-                      className="w-full h-full object-cover object-center"
-                      alt="Cat"
-                    />
-                  </button>
-                ))}
+            {/* Skeleton Loader */}
+            {singleProduct ? (
+              <div className="productGallery flex gap-6 items-center border-b border-border pb-[52px] mb-[52px]">
+                <div className="flex flex-col gap-4">
+                  {singleProduct.images?.map((item, i) => (
+                    <button
+                      onClick={function () {
+                        setOverviewImg(item);
+                      }}
+                      key={i}
+                      className="w-[140px] h-[157.5px] rounded-2xl overflow-hidden"
+                    >
+                      <img
+                        src={item}
+                        className="w-full h-full object-cover object-center"
+                        alt="Cat"
+                      />
+                    </button>
+                  ))}
+                </div>
+                <div className="w-[640px] h-[678px]">
+                  <img
+                    src={overviewImg}
+                    className="w-full h-full object-cover object-center"
+                    alt="Product Image"
+                  />
+                </div>
               </div>
-              <div className="w-[640px] h-[678px]">
-                <img
-                  src={data}
-                  className="w-full h-full object-cover object-center"
-                  alt="Cat in a costume"
-                />
+            ) : (
+              <div className="bg-white productGallery flex gap-6 items-center border-b border-gray-300 pb-[52px] mb-[52px]">
+                <div className="flex flex-col gap-4">
+                  <button className="w-[140px] h-[157.5px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"></button>
+                  <button className="w-[140px] h-[157.5px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"></button>
+                  <button className="w-[140px] h-[157.5px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"></button>
+                </div>
+                <div className="w-[640px] h-[678px] bg-gray-300 animate-pulse"></div>
               </div>
-            </div>
+            )}
 
             <CommonHeader firstHalf={"Black Automatic Watch"} />
           </div>
@@ -63,14 +77,22 @@ const ProductDetails = () => {
               <div className="productReview flex items-center gap-1 h-fit">
                 <FaStar className="text-[#FBBF24]" />
                 <p className="font-semibold text-base text-body-text">
-                  4.9 .{" "}
-                  <span className="font-medium underline">142 reviews</span>
+                  {singleProduct.rating} . &ensp;
+                  <span className="font-medium underline">
+                    {singleProduct.reviews?.length} reviews
+                  </span>
                 </p>
               </div>
               <div>
-                <h2 className="text-2xl font-semibold text-primary">$169.99</h2>
+                <h2 className="text-2xl font-semibold text-primary">
+                  ${singleProduct.price}
+                </h2>
                 <p className="text-sm font-medium text-body-text line-through text-end">
-                  $199.99
+                  $
+                  {(
+                    ((100 + singleProduct.discountPercentage) / 100) *
+                    singleProduct.price
+                  ).toFixed(2)}
                 </p>
               </div>
             </div>
