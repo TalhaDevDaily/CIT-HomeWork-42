@@ -15,12 +15,18 @@ const ProductDetails = () => {
   const paramsData = useParams();
 
   useEffect(() => {
+    // ---------------- Fetching single product from DummyJSON
     axios
       .get(`https://dummyjson.com/products/${paramsData.product}`)
       .then((res) => {
         setSingleProduct(res.data), setOverviewImg(res.data.images?.[0]);
       })
       .catch((error) => console.log(error));
+
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }, []);
 
   console.log(singleProduct);
