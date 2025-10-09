@@ -6,11 +6,24 @@ import { BsStars } from "react-icons/bs";
 import CommonProductCard from "../components/common/CommonProductCard";
 import { useParams } from "react-router";
 import axios from "axios";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import "./styles.css";
+
+// import required modules
+import { Pagination } from "swiper/modules";
 
 const ProductDetails = () => {
   const [singleProduct, setSingleProduct] = useState("");
 
   const [overviewImg, setOverviewImg] = useState("");
+
+  const [allProducts, setAllProducts] = useState([]);
 
   const paramsData = useParams();
 
@@ -25,11 +38,16 @@ const ProductDetails = () => {
 
     axios
       .get("https://dummyjson.com/products")
-      .then((res) => console.log(res))
+      .then((res) => {
+        setAllProducts(res.data.products);
+      })
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(singleProduct);
+  // Category-based products filtered
+  const productCategory = allProducts.filter(
+    (item) => item?.category === singleProduct?.category
+  );
 
   return (
     <>
@@ -235,7 +253,49 @@ const ProductDetails = () => {
           firstHalf={"Recommended products"}
           extraStyling={`mt-[96px] mb-10`}
         />
-        <CommonProductCard />
+
+        <Swiper
+          slidesPerView={3}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 3000, // time between slides (ms)
+            disableOnInteraction: false, // keep autoplay after user swipes
+            pauseOnMouseEnter: true,
+          }}
+          breakpoints={{
+            639: {
+              slidesPerView: 1,
+              slidesPerGroup: 1,
+            },
+            767: {
+              slidesPerView: 2,
+              slidesPerGroup: 2,
+            },
+            1023: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+            },
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {productCategory.map((singleProduct) => (
+            <SwiperSlide key={singleProduct.id}>
+              <CommonProductCard
+                productImg={singleProduct.thumbnail}
+                productTitle={singleProduct.title}
+                productPrice={singleProduct.price}
+                productCategory={singleProduct.category}
+                priceBeforeDiscount={singleProduct.discountPercentage}
+                productRating={singleProduct.rating}
+                inStock={singleProduct.stock}
+                clickDetails={() => handleDetails(singleProduct.id)}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   );
